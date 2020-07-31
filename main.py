@@ -343,7 +343,7 @@ async def say(ctx, *, sentence):
     botmsg = await ctx.send(embed=embed)
 
 @bot.command()
-async def say2(ctx, *, sentence2):
+async def say2(ctx, sentence2):
     await ctx.message.delete()
     await ctx.message.send(f"{ctx.author.mention} said:\n{sentence2}")
 
