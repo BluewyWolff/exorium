@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea/feature for ProtoPaw
+about: Suggest an idea/feature for Exorium
 title: ''
 labels: enhancement
 assignees: ''
