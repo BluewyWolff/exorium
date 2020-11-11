@@ -24,7 +24,7 @@ intents = discord.Intents.all()
 bot = commands.Bot(command_prefix=["exo ", "Exo ", "p/", "gay "], intents=intents)  # sets the bot prefix
 bot.remove_command('help')  # removes the default discord.py help command
 
-initial_extensions = ['cogs.verification']
+initial_extensions = ['cogs.verification', 'jishaku']
 
 if __name__ == '__main__':
     for extension in initial_extensions:
@@ -48,8 +48,6 @@ async def on_ready():
     print('version:')
     print(discord.__version__)
     print('-----------')
-
-bot.load_extension('jishaku')
 
 
 @bot.event
