@@ -24,6 +24,14 @@ intents = discord.Intents.all()
 bot = commands.Bot(command_prefix=["exo ", "Exo ", "p/", "gay "], intents=intents)  # sets the bot prefix
 bot.remove_command('help')  # removes the default discord.py help command
 
+initial_extensions = ['cogs.verification']
+
+if __name__ == '__main__':
+    for extension in initial_extensions:
+        try:
+            bot.load_extension(extension)
+        except Exception as e:
+            print(f'exorium: {extension} could not be loaded!\n{type(e).__name__}: {e}')
 
 @bot.event  # sets the bot status and prints when it has started in console with stats, stats include: The amount of users that are in the total amount of guilds and the discord.py version
 async def on_ready():
