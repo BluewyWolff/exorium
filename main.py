@@ -540,8 +540,7 @@ async def serverinfo(ctx):
     else:
         embed.set_author(name=ctx.guild.name + " information", url=gu.icon_url_as(format="png", size=1024), icon_url=gu.icon_url_as(format="png", size=1024))
         embed.set_thumbnail(url=gu.icon_url_as(format="png", size=1024))
-    if gu.banner is True:
-        e.set_image(url=gu.banner_url)
+    e.set_image(url=gu.banner_url)
     await ctx.send(embed=embed)
     await functions.logging(ctx, "serverinfo", bot)
 
