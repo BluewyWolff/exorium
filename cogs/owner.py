@@ -68,7 +68,7 @@ class owner(commands.Cog, name="Owner"):
             await ctx.send(e)
 
     @commands.command(brief="Get a gay overlay for your avatar")
-    async def gay(self, ctx, user: discord.Member):
+    async def gay(self, ctx, user: discord.Member = None):
         if not user:
             user = ctx.message.author
         link = f"https://some-random-api.ml/canvas/gay/?avatar={user.avatar_url}"
