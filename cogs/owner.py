@@ -65,6 +65,15 @@ class owner(commands.Cog, name="Owner"):
             await ctx.send(err)
         except Exception as e:
             await ctx.send(e)
-            
+
+    @commands.command(brief="Get a gay overlay for your avatar")
+    async def gay(self, ctx):
+        link = f"https://some-random-api.ml/canvas/gay/?avatar={ctx.message.author.avatar_url}"
+        e = discord.Embed(color=config.color)
+        e.set_author(name=f"Gay avatar of {ctx.message.author}", icon_url=ctx.message.author.avatar_url)
+        e.set_image(url=link)
+        await ctx.send(embed=e)
+
+
 def setup(bot):
     bot.add_cog(owner(bot))
