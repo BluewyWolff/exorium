@@ -7,10 +7,12 @@ class DiscordListsPost(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.api = discordlists.Client(self.bot)  # Create a Client instance
-        self.api.set_auth("discordextremelist.xyz", config.DELTOKEN)  # Set authorisation token for a bot list
+        self.api.set_auth("discordextremelist.xyz", config.DELTOKEN) # Set authorisation token for a bot list
+        self.api.set_auth("top.gg", config.TOPTOKEN)
         self.api.start_loop()  # Posts the server count automatically every 30 minutes
 
     @commands.command()
+    @commands.is_owner()
     async def post(self, ctx: commands.Context):
         """
         Manually posts guild count using discordlists.py (BotBlock)

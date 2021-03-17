@@ -4,36 +4,9 @@
 
 ## What information do you store and why?
 
+We do not store any information at the current moment.
 
-We only store user information for the `warn`, `delwarn`, `warnings` and `suggest` commands:
-
-the only information stored for those commands are the ID of the user and moderator, and the server ID.
-
-We store this information so warnings are saved until deleted.
-userid is used for the user that gets warned, and serverid for which case belongs to what server.
-The data, rather warn(s) are deleted if a moderator in a server you got warned in deletes your warn(s) using the `delwarn` command or if an exorium developer removes the data.
-
-`suggest` will only store the user ID. 
-
-**NOTE: ONLY MAIN DEVELOPERS, AS WELL AS THE HOST & PROVIDER CAN ACCESS THE DATA.**
-
-If exorium joins or leaves a guild it will log the following:
-- The guild name
-- The guild ID
-- The membercount
-- The owner username
-
-If a command is executed on exorium it will log the following:
-- The command executed
-- The user#1234 that executed it
-- The guild it was executed in
-- The channel it was executed in
-
-If an error occurs on exorium it will log the following:
-- The error
-- The user who did the command which caused the error
-
-Guild joins/leaves and command executions/errors do **not** get saved. Only **logged**, these are only visible to members of the exorium team and happen only once everytime.
+We only *log* guild joins/leaves and commands.
 
 ## third party sharing
 We do **not** share anything with third parties, any data saved is only visible to (certain members of) the exorium team.

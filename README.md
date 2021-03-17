@@ -50,8 +50,6 @@ askexo, invite, links, ping, source, stats, suggest
 
 **Syntax:** `exo <command>` | For the `suggest` and `askexo` command, an argument is needed.
 
-#### NSFW commands
-e621 - Search the [e621](https://e621.net) API for yiff
 
 ---
 #### Self Hosting

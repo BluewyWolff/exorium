@@ -47,7 +47,7 @@ class info(commands.Cog, name="Info"):
         e = discord.Embed(color=config.color)
         e.description = f"{args}"
         e.set_author(name=ctx.author, icon_url=ctx.author.avatar_url)
-        await ctx.send(embed=e)
+        await ctx.reply(embed=e)
 
     @commands.command(brief="Our privacy policy")
     async def privacy(self, ctx):
@@ -121,8 +121,10 @@ __**System**__
             mfa = "Required"
 
         e = discord.Embed(color=config.color)
+        
+        owner = await self.bot.fetch_user(gu.owner_id)
         e.add_field(name="__**Generic information**__",
-                    value=f"**Owner:** {gu.owner}\n**Owner ID:**\n`{gu.owner.id}`\n**Created:** {default.date(ctx.guild.created_at)}\n**Region:** {str(gu.region)}\n**MFA: **{mfa}\n**Verification:** {str(ctx.guild.verification_level).capitalize()}", inline=True)
+                    value=f"**Owner:** {str(owner)}\n**Owner ID:**\n`{gu.owner_id}`\n**Created:** {default.date(ctx.guild.created_at)}\n**Region:** {str(gu.region)}\n**MFA: **{mfa}\n**Verification:** {str(ctx.guild.verification_level).capitalize()}", inline=True)
         e.add_field(name="__**Others**__",
                     value=f"**Humans:** {len(gu.bots)} ({len(gu.members)} total)\n**Bots:** {len(gu.humans)} ({len(gu.members)} total)\n**Text:** {len(gu.text_channels)} channels\n**Voice:** {len(gu.voice_channels)} channels", inline=True)
         if features is not None:
@@ -133,7 +135,8 @@ __**System**__
         e.set_image(url=gu.banner_url)
         await ctx.send(embed=e)
 
-    @commands.command(brief="See a user's info")
+        
+    @commands.command(brief="See a user's info", aliases=["ui"])
     async def userinfo(self, ctx, *, user: discord.Member = None):
         if not user:
             user = ctx.author
@@ -214,7 +217,66 @@ __**System**__
                         value=", ".join(uroles), inline=False)
         e.set_thumbnail(url=user.avatar_url)
         await ctx.send(embed=e)
+
+
+    @commands.group(brief="Emote related commands", aliases=["emoji"])
+    async def emote(self, ctx):
+        if ctx.invoked_subcommand is None:
+            e = discord.Embed(color=config.color)
+            e.set_author(name="Emote command help", icon_url=self.bot.user.avatar_url)
+            e.description = f"""
+*Please provide an emote behind the command,
+the info command only displays info from mutual server emotes.*
+
+{ctx.prefix}emote url <emote> | **Get emote URL**
+{ctx.prefix}emote info <emote> | **Get emote information**
+"""
+            await ctx.send(embed=e)
+
+    @emote.command(brief="Get emote URL")
+    async def url(self, ctx, emoji: discord.PartialEmoji):
+        await ctx.send(emoji.url)
+                      
+    @emote.command(brief="Get emote information")
+    async def info(self, ctx, emoji: discord.Emoji):
+        e = discord.Embed(color=config.color)
+        e.description = f"""
+**Name:** {emoji.name}
+**Created:** {default.date(emoji.created_at)}
+**Emote ID:** `{emoji.id}`
+**Escaped:**""" + f"`{emoji}`" + f"""
+**Emote link**: [Click here]({emoji.url})
+"""
+
+        e.set_author(name=f"Emote from {emoji.guild}", icon_url=emoji.guild.icon_url)
+        e.set_thumbnail(url=emoji.url)
+        await ctx.send(embed=e)
+
+
+    @commands.command(brief="Suggest something for exo")
+    async def suggest(self, ctx, *, args):
+        channel = self.bot.get_channel(769132481252818954)
+        try:
+            await ctx.message.delete()
+        except discord.Forbidden:
+            pass
+        except discord.NotFound:
+            pass
+        e = discord.Embed(color=config.green)
+        e.set_author(name=f"Suggestion from {ctx.message.author}", icon_url=ctx.message.author.avatar_url)
+        e.description = args
+        e.set_footer(text="Cast your votes!")
+        ses = await channel.send(embed=e)
+        await ses.add_reaction('<a:checkmark:813798012399779841>')
+        await ses.add_reaction('<a:cross:813798012626141185>')
+        await ctx.send("The suggestion was sent successfully:")
+        se = discord.Embed(color=config.green)
+        se.description = args
+        await ctx.send(embed=se)
+
         
+
+
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.CommandNotFound):

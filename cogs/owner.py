@@ -45,6 +45,26 @@ class owner(commands.Cog, name="Owner"):
         except Exception as e:
             await ctx.send(f'Failed to load {cog}\n```py\n{e}\n```')
 
-
+    @commands.group(brief="Change bot appearance")
+    @commands.is_owner()
+    async def change(self, ctx):
+        if ctx.invoked_subcommand is None:
+            pass
+  
+    @change.command(brief="Change playing status")
+    @commands.is_owner()
+    async def playing(self, ctx, *, playing: str):
+        try:
+            await self.bot.change_presence(
+                activity=discord.Game(type=0, name=playing),
+                status=discord.Status.online
+            )
+            await ctx.send(f"Successfully changed Playing status to:\n{playing}")
+            await ctx.message.delete()
+        except discord.InvalidArgument as err:
+            await ctx.send(err)
+        except Exception as e:
+            await ctx.send(e)
+            
 def setup(bot):
     bot.add_cog(owner(bot))
