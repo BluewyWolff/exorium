@@ -73,7 +73,7 @@ class owner(commands.Cog, name="Owner"):
             user = ctx.message.author
         link = f"https://some-random-api.ml/canvas/gay/?avatar={user.avatar_url}"
         e = discord.Embed(color=config.color)
-        e.set_author(name=f"Gay avatar of {user}", icon_url=ctx.message.author.avatar_url)
+        e.set_author(name=f"Gay avatar of {user}", icon_url=user)
         e.set_image(url=link)
         await ctx.send(embed=e)
 
