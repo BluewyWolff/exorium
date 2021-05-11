@@ -26,7 +26,7 @@ class DiscordListsPost(commands.Cog, name="DLP"):
             await channel.send(f"Failed to post stats to Discord Extreme List - `{e}`")
 
     @update_stats.before_loop
-    async def before_guild_delete(self):
+    async def before_update_stats(self):
         await self.bot.wait_until_ready()
         print("[BACKGROUND] Started posting guild & shard count to Discord Extreme List")
 
