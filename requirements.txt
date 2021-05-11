@@ -4,3 +4,4 @@ git+https://github.com/iDutchy/discord.py
 discordlists.py==1.1.1
 discord_py_slash_command==1.1.2
 git+https://github.com/soulrika/LyricsGeniusAsync
+del.py
