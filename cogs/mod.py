@@ -26,9 +26,6 @@ class mod(commands.Cog, name="Moderation"):
         try:
             if ban_user == ctx.message.author:
                 return await ctx.send("You can not ban yourself, please try someone else.")
-            
-            if ban_user.top_role > ctx.author.top_role:
-                return await ctx.send("I cannot ban users with a higher role then you.")
 
             if ban_user == self.bot.user:
                 
@@ -69,6 +66,8 @@ class mod(commands.Cog, name="Moderation"):
                 member = ctx.guild.get_member(ban_user.id)
                 if member.top_role > botmember.top_role:
                     return await ctx.send("My role is too low in the hierarchy. Please move it above the highest role the user you are trying to ban has.")
+                if member.top_role > ctx.author.top_role:
+                    return await ctx.send("I cannot ban users with a higher role then you.")
                 await ctx.message.delete()
                 messageok = f"You were banned from `{ctx.guild.name}` with reason:\n\n{reason}"
                 try:
