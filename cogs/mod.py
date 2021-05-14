@@ -24,6 +24,12 @@ class mod(commands.Cog, name="Moderation"):
         crossmark = '<a:cross:813798012626141185>'
         
         try:
+            await ctx.guild.fetch_ban(ban_user)
+            return await ctx.send("You cannot ban someone who is already banned.")
+        except discord.NotFound:
+            None
+        
+        try:
             if ban_user == ctx.message.author:
                 return await ctx.send("You can not ban yourself, please try someone else.")
 
