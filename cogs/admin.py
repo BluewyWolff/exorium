@@ -1,6 +1,7 @@
 import config
 import discord
 import asyncio
+import typing
 from discord.ext import commands
 from utils import default
 
@@ -210,23 +211,23 @@ __**Are you sure you want me to leave this guild?**__
 
     @info.group(aliases=["u"])
     @admin()
-    async def user(self, ctx, *, user: int):
+    async def user(self, ctx, *, user: typing.Union[discord.User, str]):
         """ User Admin Information """
-
-        user = await self.bot.fetch_user(user)
-
-        e = discord.Embed(color=discord.Color.dark_teal())
-        e.set_author(name=user, icon_url=user.avatar_url)
-        e.set_thumbnail(url=user.avatar_url)
-        e.description = f"""
+        try:
+            e = discord.Embed(color=discord.Color.dark_teal())
+            e.set_author(name=user, icon_url=user.avatar_url)
+            e.set_thumbnail(url=user.avatar_url)
+            e.description = f"""
 **User profile:** [{user}](https://discord.com/users/{user.id})
 **Avatar URL:** [Click here]({user.avatar_url})
 **Created on {default.date(user.created_at)}**
 **Public Flags value:** {user.public_flags.value}
 **{len([x for x in self.bot.guilds if x.get_member(user.id)])}** mutual servers
 """
-        await ctx.send(embed=e)
-
+            await ctx.send(embed=e)
+        except Exception:
+            return await ctx.send(f'**I could not find {user} as user.**')
+ 
 
 
 def setup(bot):
