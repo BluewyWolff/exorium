@@ -26,6 +26,9 @@ class mod(commands.Cog, name="Moderation"):
         try:
             if ban_user == ctx.message.author:
                 return await ctx.send("You can not ban yourself, please try someone else.")
+            
+            if member.top_role > ctx.author.top_role:
+                return await ctx.send("I cannot ban users with a higher role then you.")
 
             if ban_user == self.bot.user:
                 
