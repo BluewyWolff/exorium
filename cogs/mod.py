@@ -62,8 +62,8 @@ class mod(commands.Cog, name="Moderation"):
                     return await checkmsg.edit(content="Command timed out, canceling...")
        
             botmember = ctx.guild.me
-            if ctx.guild.get_member(ban_user.id) is not None:
-                member = ctx.guild.get_member(ban_user.id)
+            try:
+                member = await ctx.guild.fetch_member(ban_user.id)
                 if member.top_role > botmember.top_role:
                     return await ctx.send("My role is too low in the hierarchy. Please move it above the highest role the user you are trying to ban has.")
                 if member.top_role > ctx.author.top_role:
@@ -77,7 +77,7 @@ class mod(commands.Cog, name="Moderation"):
                 await member.ban(reason=f"Moderator: {ctx.message.author} | Reason: {reason}")
                 e = discord.Embed(title=f"{member} was banned | {reason}", color=config.red)
                 await ctx.send(embed=e)
-            else:
+            except:
                 await ctx.guild.ban(ban_user, reason=f"Moderator: {ctx.message.author} | Reason: {reason}")
                 e = discord.Embed(title=f"{ban_user} ({ban_user.id}) was banned | {reason}", color=config.red)
                 await ctx.send(embed=e)
