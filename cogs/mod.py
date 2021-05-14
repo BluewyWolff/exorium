@@ -27,7 +27,7 @@ class mod(commands.Cog, name="Moderation"):
             await ctx.guild.fetch_ban(ban_user)
             return await ctx.send("You cannot ban someone who is already banned.")
         except discord.NotFound:
-            None
+            pass
         
         try:
             if ban_user == ctx.message.author:
