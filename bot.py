@@ -26,7 +26,7 @@ bot = commands.Bot(
 )
 slash = SlashCommand(client=bot, sync_commands=True, override_type=True, sync_on_cog_reload=True)
 
-bot.lockdown = False
+bot.lockdown = True
 # bot.blacklist = {}
 
 # mydb = config.DBdata
