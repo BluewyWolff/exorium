@@ -69,9 +69,8 @@ class mod(commands.Cog, name="Moderation"):
                 if member.top_role > ctx.author.top_role:
                     return await ctx.send("I cannot ban users with a higher role then you.")
                 await ctx.message.delete()
-                messageok = f"You were banned from `{ctx.guild.name}` with reason:\n\n{reason}"
                 try:
-                    await member.send(messageok)
+                    await member.send(f"You were banned from `{ctx.guild.name}` with reason:\n\n{reason}")
                 except discord.errors.HTTPException:
                     pass
                 await member.ban(reason=f"Moderator: {ctx.message.author} | Reason: {reason}")
