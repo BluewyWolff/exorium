@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Bench182",
+      "name": "Bench182",
+      "avatar_url": "https://avatars.githubusercontent.com/u/69903266?v=4",
+      "profile": "https://github.com/Bench182",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "exorium",
+  "projectOwner": "Foxx-org",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
