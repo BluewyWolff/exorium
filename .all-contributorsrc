@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Etile0",
+      "name": "Etile0",
+      "avatar_url": "https://avatars.githubusercontent.com/u/58475290?v=4",
+      "profile": "https://github.com/Etile0",
+      "contributions": [
+        "code",
+        "infra"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "exorium",
+  "projectOwner": "Foxx-org",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
