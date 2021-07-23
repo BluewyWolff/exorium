@@ -76,10 +76,14 @@ class error(commands.Cog, name="Error"):
 
             elog = self.bot.get_channel(839963309540638741)
             le = discord.Embed(color=discord.Color.red())
-            le.description = f"__**Full traceback**__\n" \
-                             f"```py\n{err}\n```"
-            # f"\n```py\n{''.join(traceback.format_exception(type(err), err, err.__traceback__))}\n```"
-            le.set_author(name=f"{ctx.author} | {ctx.author.id} (Guild {ctx.guild.id})", icon_url=ctx.author.avatar_url)
+            le.description = f"\n```py\n{''.join(traceback.format_exception(type(err), err, err.__traceback__))}\n```"
+            le.add_field(name="__**Additional information**__",
+                         value=f"""
+                         **Command:** {ctx.message.clean_content}
+                         **Author:** {ctx.author} ({ctx.author.id})
+                         **Guild:** {ctx.guild} ({ctx.guild.id})
+                         **Channel:** {ctx.channel} ({ctx.channel.id})
+                               """)
             await elog.send(embed=le)
             print(err.__traceback__)
 
@@ -87,7 +91,8 @@ class error(commands.Cog, name="Error"):
                 return u.id == ctx.author.id and r.message.id == checkmsg.id
 
             e = discord.Embed(title="traceback", color=discord.Color.red())
-            e.description = f"```py\n{''.join(traceback.format_exception(type(err), err, err.__traceback__))}\n```"
+            e.description = f"```py\n{err}\n```"
+            #e.description = f"```py\n{''.join(traceback.format_exception(type(err), err, err.__traceback__))}\n```"
             e.set_footer(text=_("Do you want a developer to join and investigate?"))
             try:
                 checkmsg = await ctx.reply(embed=e)
@@ -102,7 +107,8 @@ class error(commands.Cog, name="Error"):
                         pass
 
                     se = discord.Embed(title="traceback", color=discord.Color.red())
-                    se.description = f"```py\n{''.join(traceback.format_exception(type(err), err, err.__traceback__))}\n```"
+                    se.description = f"```py\n{err}\n```"
+                    #se.description = f"```py\n{''.join(traceback.format_exception(type(err), err, err.__traceback__))}\n```"
                     se.set_footer(text=_("A developer will join soon. Thank you."))
 
                     await checkmsg.edit(embed=se)
