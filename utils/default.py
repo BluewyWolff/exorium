@@ -6,7 +6,7 @@ def date(target, clock=True):
     return target.strftime("%d %B %Y, %H:%M")
 
 async def interactions(ctx, members, name, error_name, list, reason=None, sra_url=None):
-    if members is None:
+    if len(set(members)) == 0:
         return await ctx.send(f'You must specify the user to {error_name}!')
     if reason is not None:
         if len(reason) > 256:
