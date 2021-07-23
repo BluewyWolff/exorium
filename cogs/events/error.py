@@ -77,7 +77,8 @@ class error(commands.Cog, name="Error"):
             elog = self.bot.get_channel(839963309540638741)
             le = discord.Embed(color=discord.Color.red())
             le.description = f"__**Full traceback**__\n" \
-                             f"\n```py\n{''.join(traceback.format_exception(type(err), err, err.__traceback__))}\n```"
+                             f"```py\n{err}\n```"
+            # f"\n```py\n{''.join(traceback.format_exception(type(err), err, err.__traceback__))}\n```"
             le.set_author(name=f"{ctx.author} | {ctx.author.id} (Guild {ctx.guild.id})", icon_url=ctx.author.avatar_url)
             await elog.send(embed=le)
             print(err.__traceback__)
