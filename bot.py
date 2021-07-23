@@ -24,6 +24,7 @@ async def run():
         await db.execute("CREATE TABLE IF NOT EXISTS balance (user_id BIGINT, guild_id BIGINT, money BIGINT, CONSTRAINT CompKey_ID_NAME PRIMARY KEY (user_id, guild_id))")
         await db.execute("CREATE TABLE IF NOT EXISTS moneylogs (guild_id BIGINT PRIMARY KEY, channel_id BIGINT)")
         await db.execute("CREATE TABLE IF NOT EXISTS guildprefix (guild_id BIGINT PRIMARY KEY, prefix TEXT)")
+        await db.execute("CREATE TABLE IF NOT EXISTS gcurrency (guild_id BIGINT PRIMARY KEY, currency TEXT)")
         res = await db.fetch('SELECT * FROM blacklist')
         for the_id in res:
             bot.blacklist[the_id['id']] = the_id['reason']
