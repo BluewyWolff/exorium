@@ -3,7 +3,6 @@ import random
 import discord, asyncio, config
 from discord.ext import commands
 from utils import default as functions
-
 import config
 
 class currency(commands.Cog, name="Currency"):
@@ -16,6 +15,10 @@ class currency(commands.Cog, name="Currency"):
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def setbalance(self, ctx, member: discord.Member, balance: int):
         """ set someone's balance """
+        currency = await self.bot.database.fetchval("SELECT currency FROM gcurrency WHERE guild_id = $1", ctx.guild.id)
+        if currency is None:
+            currency = 'Ezeqs'
+
         query = """
 INSERT INTO balance VALUES($1, $2, $3)
 ON CONFLICT (user_id, guild_id) DO UPDATE
@@ -27,7 +30,7 @@ AND balance.user_id = $1
         await self.bot.database.execute(query, member.id, ctx.guild.id, balance)
         e = discord.Embed(color=discord.Color.grass())
         e.set_author(name=ctx.author, icon_url=ctx.author.avatar_url)
-        e.description = f"Updated {member.mention}'s balance\nnew balance: **{balance:,}** ezeqs"
+        e.description = f"Updated {member.mention}'s balance\nnew balance: **{balance:,}** {currency}"
         await ctx.send(embed=e)
         await functions.currencylogs(self, ctx, 'Balance manually adjusted', balance, ctx.author, member)
         # dbchan = await self.bot.database.fetchval("SELECT channel_id FROM moneylogs WHERE guild_id = $1", ctx.guild.id)
@@ -81,6 +84,10 @@ AND balance.user_id = $1
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def balance(self, ctx, member: discord.Member = None):
         """ check your balance """
+        currency = await self.bot.database.fetchval("SELECT currency FROM gcurrency WHERE guild_id = $1", ctx.guild.id)
+        if currency is None:
+            currency = 'Ezeqs'
+
         if member is None:
             member = ctx.author
 
@@ -95,9 +102,9 @@ AND balance.user_id = $1
             e = discord.Embed(color=discord.Color.grassy_green())
             e.title = f"{member}'s balance"
             if member is ctx.author:
-                e.description = f"You have **{int(results):,}** ezeqs."
+                e.description = f"You have **{int(results):,}** {currency}."
             else:
-                e.description = f"They have **{int(results):,}** ezeqs."
+                e.description = f"They have **{int(results):,}** {currency}."
 
             await ctx.send(embed=e)
         except Exception as e:
@@ -107,11 +114,14 @@ AND balance.user_id = $1
     @commands.cooldown(1, 500, commands.BucketType.user)
     async def work(self, ctx):
         """ Work for your money """
+        currency = await self.bot.database.fetchval("SELECT currency FROM gcurrency WHERE guild_id = $1", ctx.guild.id)
+        if currency is None:
+            currency = 'Ezeqs'
         addbal = random.randint(100, 500)
         chargebal = random.randint(100, 200)
-        response1 = f"You went to work and earned {addbal:,} Ezeqs through your hard work!"
+        response1 = f"You went to work and earned {addbal:,} {currency} through your hard work!"
         response2 = f"You came late, and lost any chance for earning money today."
-        response3 = f"You broke the machines while working, and the boss charged back {chargebal:,} Ezegs"
+        response3 = f"You broke the machines while working, and the boss charged back {chargebal:,} {currency}"
 
         rc = random.choice([response1, response2, response3])
 
@@ -210,6 +220,24 @@ AND balance.user_id = $1
             return await ctx.send(f"Currency will now be logged in {channel.mention}")
 
         # await ctx.send(cl)
+
+    @commands.command()
+    @commands.has_permissions(manage_guild=True)
+    async def setcurrency(self, ctx, currency = None):
+        """ Set the type of currency to use """
+        if currency is None:
+            currency = "Ezeqs"
+
+        query = """
+        INSERT INTO gcurrency VALUES($1, $2)
+        ON CONFLICT (guild_id) DO UPDATE
+        SET currency = $2
+        WHERE gcurrency.guild_id = $1
+                """
+
+        await self.bot.database.execute(query, ctx.guild.id, currency)
+        await ctx.send(f"Your currency has been set to {currency}")
+
 
 def setup(bot):
     bot.add_cog(currency(bot))
