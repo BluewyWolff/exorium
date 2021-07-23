@@ -15,12 +15,12 @@ class social(commands.Cog, name="Social"):
         self.bot = bot
         self.help_icon = "<:Fifihug:847524779019993178>"
 
-    @commands.command(brief="Slap someone", enabled=False)
-    async def slap(self, ctx, members: commands.Greedy[discord.Member] = None, *, reason=None):
-        """Slap the specified people"""
-        if str(ctx.author.id) in str(members):
-            return await ctx.send(_("You can't slap yourself"))
-        await functions.interactions(ctx, members, _("slapped"), _('slap'), gifs.slap, reason)
+    # @commands.command(brief="Slap someone", enabled=False)
+    # async def slap(self, ctx, members: commands.Greedy[discord.Member] = None, *, reason=None):
+    #    """Slap the specified people"""
+    #      if str(ctx.author.id) in str(members):
+    #         return await ctx.send(_("You can't slap yourself"))
+    #     await functions.interactions(ctx, members, _("slapped"), _('slap'), gifs.slap, reason)
 
     @commands.command(brief="Snuggle someone")
     async def snuggle(self, ctx, members: commands.Greedy[discord.Member] = None, *, reason=None):
