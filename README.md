@@ -1,25 +1,2 @@
 # exorium [![Online Discord Members](https://img.shields.io/discord/828933786459832350?color=7289DA&label=Discord&logo=discord&logoColor=white)](https://discord.gg/Ev84kVh6kv) [![License Information](https://img.shields.io/github/license/flitzstudios/exorium?label=License&logo=github)](LICENSE) ![Python Linter](https://img.shields.io/github/workflow/status/flitzstudios/exorium/Python%20Linter%20via%20Flake8?label=Python%20Linter&logo=python&logoColor=ffd343) [![Crowdin](https://badges.crowdin.net/esquire/localized.svg)](https://crowdin.com/project/esquire)
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-<img src="https://socialify.git.ci/flitzstudios/exorium/image?description=1&descriptionEditable=A%20multifunctional%20bot%20to%20fit%20your%20servers%20needs.&font=Raleway&forks=1&issues=1&language=1&logo=https%3A%2F%2Fquacky.elixi.re%2Fi%2Fbuwm.png%3Fraw%3Dtrue&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Light" alt="exorium" width="640" height="320" />
-
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://bduck.xyz"><img src="https://avatars.githubusercontent.com/u/43557963?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Duck</b></sub></a><br /><a href="https://github.com/Foxx-org/exorium/commits?author=DuckMasterAl" title="Code">💻</a></td>
-  </tr>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+![repo](https://camo.githubusercontent.com/b05e1736c2f0f906d45943bc97a9e68103832840684f8bb0483a4411d1246d60/68747470733a2f2f736f6369616c6966792e6769742e63692f666c69747a73747564696f732f65786f7269756d2f696d6167653f6465736372697074696f6e3d31266465736372697074696f6e4564697461626c653d412532306d756c746966756e6374696f6e616c253230626f74253230746f253230666974253230796f7572253230736572766572732532306e656564732e26666f6e743d52616c6577617926666f726b733d31266973737565733d31266c616e67756167653d31266c6f676f3d6874747073253341253246253246717561636b792e656c6978692e7265253246692532466275776d2e706e6725334672617725334474727565266f776e65723d31267061747465726e3d43697263756974253230426f6172642670756c6c733d31267374617267617a6572733d31267468656d653d4c69676874)
