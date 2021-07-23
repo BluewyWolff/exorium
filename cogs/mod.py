@@ -108,7 +108,7 @@ class mod(commands.Cog, name="Moderation"):
                 pass
             await ctx.guild.unban(user.user, reason=f"moderator: {ctx.message.author} | {reason}")
             e = discord.Embed(color=discord.Color.green())
-            e.description = _("{0} has been unbanned | {1}").format(user.user.name. reason)
+            e.description = _("{0} has been unbanned | {1}").format(user.user.name, reason)
             await ctx.send(embed=e)
         except Exception as e:
             await ctx.send(f"```py\n{e}\n```")
