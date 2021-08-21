@@ -60,7 +60,7 @@ async def currencylogs(self, ctx, action, money, author, user):
     dbchan = await self.bot.database.fetchval("SELECT channel_id FROM moneylogs WHERE guild_id = $1", ctx.guild.id)
     balance = await self.bot.database.fetchval("SELECT money FROM balance WHERE guild_id = $1 AND user_id = $2", ctx.guild.id, ctx.author)
     targbal = await self.bot.database.fetchval("SELECT money FROM balance WHERE guild_id = $1 AND user_id = $2", ctx.guild.id, user)
-    currency = await self.bot.database.fetchval("SELECT currency FROM gcurrency WHERE guild_id = $1".ctx.guild.id)
+    currency = await self.bot.database.fetchval("SELECT currency FROM gcurrency WHERE guild_id = $1", ctx.guild.id)
     if currency is None:
         currency = 'Ezeqs'
 
