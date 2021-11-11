@@ -63,7 +63,7 @@ class PenguinHelp(commands.HelpCommand):
         self.ignore_cogs = ['Error', 'DLP', 'Slash', 'Logs', 'Admin', 'Devishaku', 'Jishaku']
         self.help_icon = '<:store:729571108260675604>'
         super().__init__(command_attrs={
-            "cooldown": commands.Cooldown(1, 5, commands.BucketType.member),
+            # "cooldown": commands.Cooldown(1, 5, commands.BucketType.user),
             "help": "The help command",
             "aliases": ["h"]
         })
@@ -75,7 +75,7 @@ class PenguinHelp(commands.HelpCommand):
         """ See bot help """
         ctx = self.context
 
-        Josh = await self.context.bot.fetch_user(809057677716094997)
+        Josh = await self.context.bot.fetch_user(843866750131109909)
 
         support = config.support
         invite = config.invite
@@ -83,14 +83,14 @@ class PenguinHelp(commands.HelpCommand):
         s = "Support"
         i = "Bot invite"
         boats = "[discord.boats](https://discord.boats/bot/620990340630970425)"
-        privacy = "[Privacy Policy](https://flitzstudios.github.io/exoriumbot/src/pages/legal.html)"
+        privacy = "[Privacy Policy](https://psychops.tk/legal.php#privacy)"
 
         emb = discord.Embed(color=discord.Color.dark_teal())
         emb.description = (f"[{s}]({support}) | [{i}]({invite}) "
                            f"| {boats} | {privacy}\n\n**Made by:** {Josh}\nPrefix: {prefix}\n\n")
 
         def check(r, u):
-            return u.id in [self.context.author.id, 809057677716094997] and r.message.id == msg.id
+            return u.id in [self.context.author.id, 843866750131109909] and r.message.id == msg.id
 
         exts = []
         to_react = []
@@ -110,8 +110,8 @@ class PenguinHelp(commands.HelpCommand):
             exts.append(f"{extension.help_icon} **{extension.qualified_name}**")
             to_react.append(f"{extension.help_icon}")
 
-        emb.set_author(icon_url=self.context.bot.user.avatar_url, name=self.context.bot.user.name)
-        emb.set_thumbnail(url=self.context.bot.user.avatar_url)
+        #emb.set_author(icon_url=self.context.bot.user.avatar.url, name=self.context.bot.user.name)
+        emb.set_thumbnail(url=self.context.bot.user.avatar.url)
         emb.add_field(name="Categories:", value="\n".join(exts) + "\n\u200b")
 
         if ctx.guild:
@@ -130,7 +130,7 @@ class PenguinHelp(commands.HelpCommand):
                     "👑": 'Admin',
                     "💰": 'Currency',
                     "<:Hug:839603884716589066>": 'Social',
-                    "<:cog:863130088547287070>": 'Management',
+                    "<:cog:908418457203265536>": 'Management',
                     "<:slash:833803136199032882>": 'Slash',
                     "\U000023f9": 'Stop'
                 }

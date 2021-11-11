@@ -92,7 +92,7 @@ You can get support here:
             user = ctx.message.author
 
         e = discord.Embed(color=discord.Color.dark_teal())
-        e.set_image(url=user.avatar_url)
+        e.set_image(url=user.avatar.url)
         e.set_footer(text=f"avatar: {user}")
         await ctx.send(embed=e)
 
