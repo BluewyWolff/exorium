@@ -125,11 +125,11 @@ class PenguinHelp(commands.HelpCommand):
                 await msg.add_reaction('\U000023f9')
 
                 cog_emojis = {
-                    "<:Discovery:863113880402133022>": 'Utility',
-                    "<:ban:842138747134541829>": 'Moderation',
+                    "<:Discovery:845656527347777548>": 'Utility',
+                    "<:banhammer:908419238249787412>": 'Moderation',
                     "👑": 'Admin',
                     "💰": 'Currency',
-                    "<:Fifihug:847524779019993178>": 'Social',
+                    "<:Hug:839603884716589066>": 'Social',
                     "<:cog:863130088547287070>": 'Management',
                     "<:slash:833803136199032882>": 'Slash',
                     "\U000023f9": 'Stop'
