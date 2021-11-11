@@ -6,7 +6,6 @@ import datetime
 import asyncpg
 
 from discord.ext import commands
-from discord_slash import SlashCommand
 from utils import i18n
 
 async def run():
@@ -14,7 +13,6 @@ async def run():
 
     bot = Bot(database=db)
     bot.loop = asyncio.get_event_loop()
-    slash = SlashCommand(client=bot, sync_commands=True, override_type=True, sync_on_cog_reload=True)
 
     if not hasattr(bot, 'uptime'):
         bot.uptime = datetime.datetime.now()
