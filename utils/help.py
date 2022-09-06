@@ -75,7 +75,7 @@ class PenguinHelp(commands.HelpCommand):
         """ See bot help """
         ctx = self.context
 
-        Josh = await self.context.bot.fetch_user(843866750131109909)
+        Josh = await self.context.bot.fetch_user(839237573595365406)
 
         support = config.support
         invite = config.invite
@@ -90,7 +90,7 @@ class PenguinHelp(commands.HelpCommand):
                            f"| {boats} | {privacy}\n\n**Made by:** {Josh}\nPrefix: {prefix}\n\n")
 
         def check(r, u):
-            return u.id in [self.context.author.id, 843866750131109909] and r.message.id == msg.id
+            return u.id in [self.context.author.id, 839237573595365406] and r.message.id == msg.id
 
         exts = []
         to_react = []
@@ -125,13 +125,12 @@ class PenguinHelp(commands.HelpCommand):
                 await msg.add_reaction('\U000023f9')
 
                 cog_emojis = {
-                    "<:Discovery:845656527347777548>": 'Utility',
-                    "<:banhammer:908419238249787412>": 'Moderation',
+                    "🏗️": 'Utility',
+                    "🔨": 'Moderation',
                     "👑": 'Admin',
                     "💰": 'Currency',
-                    "<:Hug:839603884716589066>": 'Social',
-                    "<:cog:908418457203265536>": 'Management',
-                    "<:slash:833803136199032882>": 'Slash',
+                    "♥️": 'Social',
+                    "⌨️": 'Management',
                     "\U000023f9": 'Stop'
                 }
                 react, user = await self.context.bot.wait_for('reaction_add', check=check, timeout=300.0)
