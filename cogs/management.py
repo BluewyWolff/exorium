@@ -6,7 +6,7 @@ from discord.ext import commands
 class management(commands.Cog, name="Management"):
     def __init__(self, bot):
         self.bot = bot
-        self.help_icon = '<:cog:908418457203265536>'
+        self.help_icon = '♥️'
 
     @commands.group()
     async def prefix(self, ctx):
