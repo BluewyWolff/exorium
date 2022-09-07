@@ -10,7 +10,7 @@ class nsfw(commands.Cog, name="Nsfw"):
         self.help_icon = '🔞'
 
     @commands.command()
-    async def e621(ctx, *, tags):
+    async def e621(self, ctx, *, tags):
         if tags.lower() in ["scat", "child"]:
             await ctx.send("This tag is blacklisted.")
             return
