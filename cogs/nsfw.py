@@ -4,7 +4,7 @@ import config
 
 from discord.ext import commands
 
-class management(commands.Cog, name="Nsfw"):
+class nsfw(commands.Cog, name="Nsfw"):
     def __init__(self, bot):
         self.bot = bot
         self.help_icon = '🔞'
