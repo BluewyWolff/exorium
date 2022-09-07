@@ -15,7 +15,7 @@ class social(commands.Cog, name="Social"):
         self.bot = bot
         self.help_icon = "♥️"
 
-    @commands.command(brief="Slap someone", enabled=False)
+    @commands.command(brief="Slap someone")
     async def slap(self, ctx, members: commands.Greedy[discord.Member], *, reason=None):
         """Slap the specified people"""
         if str(ctx.author.id) in str(members):
@@ -31,7 +31,7 @@ class social(commands.Cog, name="Social"):
     async def hug(self, ctx, members: commands.Greedy[discord.Member], *, reason=None):
         await functions.interactions(ctx, members, _("hugged"), _('hug'), gifs.hug, reason, 'hug')
 
-    @commands.command(brief="Bonk someone", enabled=False)
+    @commands.command(brief="Bonk someone")
     async def bonk(self, ctx, members: commands.Greedy[discord.Member], *, reason=None):
         """Bonk the specified people"""
         await functions.interactions(ctx, members, _("bonked"), _('bonk'), gifs.bonk, reason)
