@@ -1,6 +1,8 @@
 import requests
 import discord
 import config
+import random
+import json
 
 from requests.auth import HTTPBasicAuth
 from discord.ext import commands
