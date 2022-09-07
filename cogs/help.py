@@ -156,8 +156,8 @@ You can get support here:
             uroles = [f"{', '.join(uroles[:10])} (+{len(user.roles) - 11})"]
 
         e = discord.Embed(color=user.colour)
-        e.set_author(name=user.display_name, icon_url=user.avatar_url)
-        e.set_thumbnail(url=user.avatar_url)
+        e.set_author(name=user.display_name, icon_url=user.avatar.url)
+        e.set_thumbnail(url=user.avatar.url)
         e.description = _("""
 **Username:** {0}
 **User ID:** {1}
@@ -244,7 +244,7 @@ You can get support here:
         """ Say something with Esquire """
         e = discord.Embed(color=discord.Color.dark_teal())
         e.description = say
-        e.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
+        e.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar.url)
         await ctx.send(embed=e)
 
     @commands.command(aliases=["statistics", "about"])
@@ -269,7 +269,7 @@ You can get support here:
         # dev1 = ', '.join(devs)
 
         e = discord.Embed(color=discord.Color.dark_teal())
-        e.set_thumbnail(url=self.bot.user.avatar_url)
+        e.set_thumbnail(url=self.bot.user.avatar.url)
         e.set_image(url="https://cdn.bluewy.xyz/yerZ.png")
 
         users = sum(x.member_count for x in self.bot.guilds)
@@ -337,7 +337,7 @@ Hosted on **{11}**
         """ Review our bot! """
         channel = self.bot.get_channel(839962350521548871)
         e1 = discord.Embed(color=discord.Color.dark_teal())
-        e1.set_author(name=_('From {0}').format(ctx.author), icon_url=ctx.author.avatar_url)
+        e1.set_author(name=_('From {0}').format(ctx.author), icon_url=ctx.author.avatar.url)
         e1.description = review
         await channel.send(embed=e1)
         await ctx.send(_("Thank you! Your review has been recorded in our support server."))
@@ -371,7 +371,7 @@ Hosted on **{11}**
                     except Exception:
                         pass
                     e = discord.Embed(color=discord.Color.random(), description=desc)
-                    e.set_author(name=ctx.author, icon_url=ctx.author.avatar_url)
+                    e.set_author(name=ctx.author, icon_url=ctx.author.avatar.url)
                     await channel.send(embed=e)
 
                     embed = discord.Embed(color=discord.Color.green(), description=_("Sent embedded announcement in **{0}**.").format(channel))
