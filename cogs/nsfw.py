@@ -36,7 +36,6 @@ class nsfw(commands.Cog, name="Nsfw"):
         embed.set_footer(text='Powered by e621.')
         await delmsg.delete()
         await ctx.send(embed=embed)
-        await functions.logging(ctx, "e621", bot)
         
 def setup(bot):
     bot.add_cog(nsfw(bot))
