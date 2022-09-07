@@ -154,7 +154,7 @@ class social(commands.Cog, name="Social"):
         """ Gay overlay on avatar """
         if not user:
             user = ctx.author
-        link = f"https://some-random-api.ml/canvas/gay/?avatar={user.avatar_url}"
+        link = f"https://some-random-api.ml/canvas/gay/?avatar={user.avatar.url}"
         e = discord.Embed(color=discord.Color.random())
         e.set_image(url=link)
         e.set_footer(text=f"Gay avatar: {user}")
