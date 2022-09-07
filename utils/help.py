@@ -131,6 +131,7 @@ class PenguinHelp(commands.HelpCommand):
                     "💰": 'Currency',
                     "♥️": 'Social',
                     "⌨️": 'Management',
+                    "🔞": 'Nsfw'
                     "\U000023f9": 'Stop'
                 }
                 react, user = await self.context.bot.wait_for('reaction_add', check=check, timeout=300.0)
