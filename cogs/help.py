@@ -70,7 +70,7 @@ You can get support here:
         if len(suggestion) >= 500:
             return await ctx.send(_("Please make your suggestion shorter then 500 characters."))
         e = discord.Embed(color=discord.Color.orange())
-        e.set_author(icon_url=ctx.message.author.avatar_url, name=ctx.message.author)
+        e.set_author(icon_url=ctx.message.author.avatar.url, name=ctx.message.author)
         e.description = suggestion
         ra = await channel.send(embed=e)
         await ra.add_reaction(config.checkmark)
