@@ -1,4 +1,4 @@
-
+import requests
 import discord
 import config
 
