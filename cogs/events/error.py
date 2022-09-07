@@ -33,7 +33,7 @@ class error(commands.Cog, name="Error"):
             return await ctx.send(_("{0} **`{1}` is a required argument!**").format(config.crossmark, err.param.name))
 
         if isinstance(err, commands.CommandOnCooldown):
-            clog = self.bot.get_channel(839963291623096320)
+            clog = self.bot.get_channel(1017158555620626442)
             e = discord.Embed(color=discord.Color.red())
             e.description = _("**{0} has a `{1:.0f}` second cooldown on command `{2}`**\nGuild **{3}** with ID `{4}` | User ID: `{5}`").format(ctx.author, err.retry_after, ctx.command.qualified_name, ctx.guild, ctx.guild.id, ctx.author.id)
             await clog.send(embed=e)
@@ -74,7 +74,7 @@ class error(commands.Cog, name="Error"):
 
         else:
 
-            elog = self.bot.get_channel(839963309540638741)
+            elog = self.bot.get_channel(1017158555620626442)
             le = discord.Embed(color=discord.Color.red())
             le.description = f"\n```py\n{''.join(traceback.format_exception(type(err), err, err.__traceback__))}\n```"
             le.add_field(name="__**Additional information**__",
