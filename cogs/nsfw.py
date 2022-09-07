@@ -2,6 +2,7 @@ import requests
 import discord
 import config
 
+from requests.auth import HTTPBasicAuth
 from discord.ext import commands
 
 class nsfw(commands.Cog, name="Nsfw"):
