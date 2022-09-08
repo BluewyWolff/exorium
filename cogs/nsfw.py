@@ -12,6 +12,7 @@ class nsfw(commands.Cog, name="Nsfw"):
         self.bot = bot
         self.help_icon = '🔞'
 
+    @commands.is_nsfw()
     @commands.command()
     async def e621(self, ctx, *, tags):
         if tags.lower() in ["scat", "child"]:
