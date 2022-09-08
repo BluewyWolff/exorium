@@ -57,6 +57,9 @@ class error(commands.Cog, name="Error"):
         if isinstance(err, commands.EmojiNotFound):
             return await ctx.send(_("{0} **Could not find emote `{1}~**").format(config.confused, err.emote))
         
+        if isinstance(err, commands.errors.NSFWChannelRequired):
+            return await ctx.send("Please use this command in an NSFW channel.")
+        
         if isinstance(err, discord.NotFound):
             return await ctx.send(_("I could not find the argument you have provided."))
 
