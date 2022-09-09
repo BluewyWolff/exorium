@@ -33,6 +33,7 @@ class nsfw(commands.Cog, name="Nsfw"):
         embed = discord.Embed(title='Random yiff')
         embed.set_image(url=finalimg)
         embed.set_footer(text='Powered by e621.')
+        embed.description = finalimg
         await delmsg.delete()
         await ctx.send(embed=embed)
         
