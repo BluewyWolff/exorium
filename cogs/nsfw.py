@@ -30,11 +30,6 @@ class nsfw(commands.Cog, name="Nsfw"):
             await ctx.send(f"Sadly, we couldn't get you `{tags}`")
             return
         finalimg = random.choice(response.json()["posts"])["file"]["url"]
-        while True:
-            if finalimg.endswith(".webm"):
-                finalimg = random.choice(response.json()["posts"])["file"]["url"]
-            else:
-                break
         embed = discord.Embed(title='Random yiff')
         embed.set_image(url=finalimg)
         embed.set_footer(text='Powered by e621.')
